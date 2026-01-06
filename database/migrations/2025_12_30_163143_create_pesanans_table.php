@@ -14,13 +14,10 @@ return new class extends Migration
         Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
             $table->string('nama_pasien', 255);
-            $table->text('alamat_pasien');
             $table->string('gambar_obat')->nullable();
             $table->string('nama_obat', 255);
-            $table->string('dosis', 20);
             $table->integer('jumlah');
-            $table->bigInteger('harga');
-            $table->enum('status_pembayaran',['belum bayar','lunas']);
+            $table->bigInteger('total_harga');
             $table->enum('status_pesanan', ['Dikemas','Dikirim','Diterima']);
             $table->timestamps();
         });

@@ -49,7 +49,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'role' => 'buyer',
-            'role_id' => 1
+            'role_id' => 2
         ]);
 
         if (Auth::attempt(['email'=>$request->email, 'password' => $request->password])) {
@@ -75,11 +75,10 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            if(auth()->user()->role === 'admin') {
-                return redirect()->route('produk.index');
-            } else {
-                return redirect()->route('store');
-            }
+            if(auth()->user()->email === 'admin@gmail.com') {
+                return redirect()->intended('/produk');
+            } 
+                return redirect()->intended('store');
         }
  
         return back()->withErrors([

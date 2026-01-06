@@ -11,7 +11,15 @@ class Pesanan extends Model
     protected $table = 'pesanans';
 
     protected $fillable = [
-    'nama_pasien','alamat_pasien','gambar_obat','nama_obat','dosis','jumlah','harga','status_pembayaran','status_pesanan',];
-        
-    protected $guarded = [];
+    'user_id','produk_id','nama_obat','jumlah','total_harga','nama_pasien','status_pesanan',];   
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function produk()
+    {
+        return $this->belongsTo(Produk::class);
+    }
 }

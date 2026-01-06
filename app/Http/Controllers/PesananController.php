@@ -10,7 +10,7 @@ class PesananController extends Controller
 {
     public function index()
     {
-        $pesanans = Pesanan::all();
+        $pesanans = Pesanan::with(['user','produk'])->latest()->get();
         
         return view('pages.pesanan.index', [
             'pesanans' => $pesanans, 

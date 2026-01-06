@@ -53,7 +53,10 @@
 
             <div class="d-flex justify-content-end mt-3">
                 <a href="{{ route('store') }}" class="btn btn-secondary me-2">Belanja Lagi</a>
-                <a href="#" class="btn btn-success">Checkout (Bayar)</a>
+                <form action="{{ route('checkout') }}" method="post">
+                    @csrf
+                    <button href="submit" class="btn btn-success">Beli</button>
+                </form>                    
             </div>
         </div>
     </div>

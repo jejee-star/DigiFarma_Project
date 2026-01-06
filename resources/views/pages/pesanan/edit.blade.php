@@ -29,35 +29,28 @@
                             <input type="text" inputmode="text" name="nama_pasien" id="nama_pasien" class="form-control" value="{{ old('nama_pasien', $pesanans->nama_pasien) }}">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="alamat_pasien">Alamat Pasien</label>
-                            <input type="text" inputmode="text" name="alamat_pasien" id="alamat_pasien" class="form-control" value="{{ old('alamat_pasien', $pesanans->alamat_pasien) }}">
-                        </div>
-                        <div class="form-group mb-3">
                             <label for="gambar_obat">Gambar Obat</label>
-                            <input type="file" name="gambar_obat" id="gambar_obat" class="form-control" value="{{ old('gambar_obat', $pesanans->gambar_obat)}}">  
+                            <div class="mb-2">
+                                @if($pesanans->gambar_obat)
+                                    <img src="{{ asset('storage/' . $pesanans->produk->gambar_obat) }}" alt="Gambar Obat" width="150" class="img-thumbnail">
+                                @elseif($pesanans->produk && $pesanans->produk->gambar_obat)
+                                    <img src="{{ asset('storage/' . $pesanans->produk->gambar_obat) }}" alt="Gambar Produk" width="150" class="img-thumbnail">
+                                @else
+                                    <p class="text-danger">Belum ada gambar</p>
+                                @endif
+                            </div>
                         </div>
                         <div class="form-group mb-3">
                             <label for="nama_obat">Nama Obat</label>
                             <input type="text" inputmode="text" name="nama_obat" id="nama_obat" class="form-control" value="{{ old('nama_obat', $pesanans->nama_obat) }}">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="dosis">Dosis</label>
-                            <input type="text" inputmode="text" name="dosis" id="dosis" class="form-control" value="{{ old('dosis', $pesanans->dosis) }}">
-                        </div>
-                        <div class="form-group mb-3">
                             <label for="jumlah">Jumlah</label>
                             <input type="text" inputmode="text" name="jumlah" id="jumlah" class="form-control" value="{{ old('jumlah', $pesanans->jumlah) }}">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="harga">Harga</label>
-                            <input type="text" inputmode="text" name="harga" id="harga" class="form-control" value="{{ old('harga', $pesanans->harga) }}">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="status_pembayaran">Status Pembayaran</label>
-                            <select name="status_pembayaran" id="status_pembayaran" class="form-control" value="{{ old('status_pembayaran', $pesanans->status_pembayaran) }}">
-                                <option value="belum bayar">Belum Bayar</option>
-                                <option value="lunas">Lunas</option>
-                            </select>
+                            <label for="total_harga">Harga</label>
+                            <input type="text" inputmode="text" name="total_harga" id="total_harga" class="form-control" value="{{ old('harga', $pesanans->harga) }}">
                         </div>
                         <div class="form-group mb-3">
                             <label for="status_pesanan">Status Pesanan</label>

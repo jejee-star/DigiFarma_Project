@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="confirmationDelete-{{ $data->id }}" tabindex="-1" aria-labelledby="confirmationDeleteLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="{{ route('pesanan.confirmation-delete', $data->id) }}" method="post" class="d-inline">
+    <form action="{{ route('pesanan.destroy', $data->id) }}" method="post" class="d-inline">
         @csrf
         @method('DELETE')
          <div class="modal-content">

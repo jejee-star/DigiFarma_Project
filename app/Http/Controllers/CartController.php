@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Produk;
@@ -41,5 +42,30 @@ class CartController extends Controller
     {
         Cart::destroy($id);
         return back()->with('success', 'Item dihapus dari keranjang.');
+    }
+
+    public function checkout()
+    {
+        $keranjang_user = Cart::where('user_id', Auth::id())->get();
+
+        if($keranjang_user->isEmpty()) {
+            return redirect()->back()->with('error','Keranjang kamu kosong!');
+        }
+
+        foreach ($keranjang_user as $data) {
+            Pesanan::create([
+                'user_id' => Auth::id(),
+                'produk_id' => $data->produk_id,
+                'jumlah'=>$data->jumlah,
+                'total_harga' =>$data->produk->harga * $data->jumlah,
+                'nama_pasien'=> Auth::user()->name,
+                'nama_obat' => $data->produk->nama_obat,
+                'status_pesanan' => 'dikemas',
+            ]);
+        }
+
+        Cart::where('user_id', Auth::id())->delete();
+
+        return redirect()->route('store')->with('success','Pesanan berhasil dibuat!');
     }
 }

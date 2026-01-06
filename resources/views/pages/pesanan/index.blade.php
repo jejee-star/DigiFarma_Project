@@ -15,14 +15,11 @@
                 <table class="table table-responsive table-bordered table-hovered">
                     <thead>
                         <tr>
-                            <th>Nama Pasien</th>
-                            <th>Alamat Pasien</th>
                             <th>Gambar Obat</th>
                             <th>Nama Obat</th>
-                            <th>Dosis</th>
                             <th>Jumlah</th>
-                            <th>Harga</th>
-                            <th>Status Pembayaran</th>
+                            <th>Total Harga</th>
+                            <th>Nama Pasien</th>
                             <th>Status Pesanan</th>
                             <th>Aksi</th>               
                         </tr>
@@ -39,16 +36,15 @@
                         <tbody>
                         @foreach ($pesanans as $data)
                         <tr>
-                            <td>{{$data->nama_pasien}}</td>
-                            <td>{{$data->alamat_pasien}}</td>
                             <td>
-                                <img src="{{ asset('storage/' . $data->gambar) }}" alt="gambar_obat" width="100">
+                                @if ($data->produk && $data->produk->gambar_obat)
+                                    <img src="{{ asset('storage/' . $data->produk->gambar) }}" alt="gambar_obat" width="80" class="img-thumbnail">
+                                @endif
                             </td>
                             <td>{{$data->nama_obat}}</td>
-                            <td>{{$data->dosis}}</td>
                             <td>{{$data->jumlah}}</td>
-                            <td>{{$data->harga}}</td>
-                            <td>{{$data->status_pembayaran}}</td>
+                            <td>{{$data->total_harga}}</td>
+                            <td>{{$data->nama_pasien}}</td>
                             <td>{{$data->status_pesanan}}</td>
                             <td>
                                 <div class="d-flex g-2">

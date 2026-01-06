@@ -131,10 +131,6 @@
                             </div>
                         </div>
                         @endforeach
-                    @else
-                        <div class="col-12 text-center">
-                            <div class="alert alert-warning">Belum ada data produk.</div>
-                        </div>
                     @endif
                 </div> </div> </section>
         <footer class="py-5 bg-dark mt-auto">
