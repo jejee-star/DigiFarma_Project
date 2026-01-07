@@ -82,21 +82,21 @@ class PesananController extends Controller
 
     public function destroy($id)
     {
-        $pesanan = Pesanan::findOrFail($id);
-        $pesanan->delete();
+        $pesanans = Pesanan::findOrFail($id);
+        $pesanans->delete();
         
         return redirect('/pesanan')->with('success'.'Berhasil menghapus!');
     }
 
     public function delete($id)
     {
-        $pesanan = Pesanan::findOrFail($id);
+        $pesanans = Pesanan::findOrFail($id);
 
-        if ($pesanan->gambar_obat && file_exists(storage_path('app/public/' . $pesanan->gambar_obat))) {
-            unlink(storage_path('app/public/' . $pesanan->gambar_obat));
+        if ($pesanans->gambar_obat && file_exists(storage_path('app/public/' . $pesanans->gambar_obat))) {
+            unlink(storage_path('app/public/' . $pesanans->gambar_obat));
         }
 
-        $pesanan-> delete();
+        $pesanans-> delete();
 
         return redirect()->route('pesanan.index')->with('success','Data berhasil dihapus!');
     }
