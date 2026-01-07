@@ -28,10 +28,6 @@
                             <input type="text" inputmode="text" name="nama_pasien" id="nama_pasien" class="form-control">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="alamat_pasien">Alamat Pasien</label>
-                            <input type="text" inputmode="text" name="alamat_pasien" id="alamat_pasien" class="form-control">
-                        </div>
-                        <div class="form-group mb-3">
                             <label for="gambar_obat">Gambar Obat</label>
                             <input type="file" name="gambar_obat" id="gambar_obat" class="form-control">  
                         </div>
@@ -40,23 +36,12 @@
                             <input type="text" inputmode="text" name="nama_obat" id="nama_pasien" class="form-control">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="dosis">Dosis</label>
-                            <input type="text" inputmode="text" name="dosis" id="dosis" class="form-control">
-                        </div>
-                        <div class="form-group mb-3">
                             <label for="jumlah">Jumlah</label>
                             <input type="text" inputmode="text" name="jumlah" id="jumlah" class="form-control">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="harga">Harga</label>
-                            <input type="text" inputmode="text" name="harga" id="harga" class="form-control">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="status_pembayaran">Status Pembayaran</label>
-                            <select name="status_pembayaran" id="status_pembayaran" class="form-control">
-                                <option value="belum bayar">Belum Bayar</option>
-                                <option value="lunas">Lunas</option>
-                            </select>
+                            <label for="total_harga">Total Harga</label>
+                            <input type="text" inputmode="text" name="total_harga" id="total_harga" class="form-control">
                         </div>
                         <div class="form-group mb-3">
                             <label for="status_pesanan">Status Pesanan</label>

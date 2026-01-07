@@ -27,21 +27,19 @@ class PesananController extends Controller
         $validatedData = $request->validate([
             'gambar_obat' => ['required','image','mimes:jpeg,png,jpg','max:2048'],
             'nama_obat' => ['required', 'max:255'],
-            'dosis' => ['required', 'max:30'],
             'jumlah' => ['required', 'max:30'],
-            'harga' => ['required', 'max:50'],
-            'status_pembayaran' => ['required', Rule::in(['belum bayar','lunas'])],
+            'total_harga' => ['required', 'max:50'],
             'status_pesanan' => ['required', Rule::in(['Dikemas','Dikirim','Diterima'])],
         ]);
         if ($request->hasFile('gambar_obat') && $request->file('gambar_obat')->isValid()) {
         $validatedData['gambar_obat'] = $request->file('gambar_obat')->store('gambar_obat', 'public');
         }
-        $produk = Produk::findOrFail($request->produk_id);
-        if ($produk->stok < $request->jumlah) {
-        return redirect()->back()->with('error', 'Maaf, stok obat tidak mencukupi!');
-        }
-         $produk->stok = $produk->stok - $request->jumlah;
-        $produk->save();
+        // $produk = Produk::findOrFail($request->produk_id);
+        // if ($produk->stok < $request->jumlah) {
+        // return redirect()->back()->with('error', 'Maaf, stok obat tidak mencukupi!');
+        // }
+        //  $produk->stok = $produk->stok - $request->jumlah;
+        // $produk->save();
         Pesanan::create($validatedData);
         
         return redirect('/pesanan')->with('success','Berhasil menambahkan!');
