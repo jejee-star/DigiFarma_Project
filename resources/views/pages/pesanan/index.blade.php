@@ -38,7 +38,7 @@
                         <tr>
                             <td>
                                 @if ($data->produk && $data->produk->gambar_obat)
-                                    <img src="{{ asset('storage/' . $data->produk->gambar) }}" alt="gambar_obat" width="80" class="img-thumbnail">
+                                    <img src="{{ asset('storage/' . $data->produk->gambar_obat) }}" alt="gambar_obat" width="80" class="img-thumbnail">
                                 @endif
                             </td>
                             <td>{{$data->nama_obat}}</td>
