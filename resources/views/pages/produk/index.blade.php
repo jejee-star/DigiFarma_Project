@@ -47,11 +47,11 @@
                                     </a>
                                     <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#confirmationDelete-{{ $data->id }}">
                                          <i class="fas fa-eraser"></i>
-                                    </button>
+                                    </button>                        
+                                    @include('pages.produk.confirmation-delete')
                                 </div>
                             </td>
                         </tr>
-                        @include('pages.produk.confirmation-delete')
                         @endforeach
                     </tbody>       
                     @endif                

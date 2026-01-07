@@ -58,7 +58,7 @@ class ProdukController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-           'gambar' => ['required','image','mimes:jpeg,png,jpg','max:2048'],
+            'gambar_obat' => ['nullable','image','mimes:jpeg,png,jpg','max:2048'],
             'nama_obat' => ['required', 'max:255'],
             'harga' => ['required', 'max:50'],
             'stok' => ['required', Rule::in(['Tersedia','Habis'])],

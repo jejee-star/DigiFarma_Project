@@ -3,6 +3,7 @@
   <div class="modal-dialog">
     <form action="{{ route('produk.destroy', $data->id) }}" method="post" class="d-inline">
         @csrf
+        @method('DELETE')
          <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title fs-5" id="confirmationDeleteLabel">Konfirmasi Hapus</h4>

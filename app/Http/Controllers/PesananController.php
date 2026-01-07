@@ -58,13 +58,10 @@ class PesananController extends Controller
     {
         $validatedData = $request->validate([
             'nama_pasien' => ['required','max:255'],
-            'alamat_pasien' => ['required', 'max:700'],
             'gambar_obat' => ['nullable','image','max:2048'],
             'nama_obat' => ['required', 'max:255'],
-            'dosis' => ['required', 'max:30'],
             'jumlah' => ['required', 'numeric'],
-            'harga' => ['required'],
-            'status_pembayaran' => ['required', Rule::in(['belum bayar','lunas'])],
+            'total_harga' => ['required'],
             'status_pesanan' => ['required', Rule::in(['Dikemas','Dikirim','Diterima'])],
         ]);
 
