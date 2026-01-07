@@ -8,10 +8,13 @@ use App\Models\Produk;
 use Illuminate\Validation\Rule;
 class PesananController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $pesanans = Pesanan::with(['user','produk'])->latest()->get();
-        
+        $search = $request->query('search');
+        $data = Pesanan::query()->when($search, function ($query, $search) {
+            return $query -> where('nama_obat', 'like', "%{$search}%") ->orWhere('nama_pasien', 'like', "%{$search}%");
+        }) -> get();
         return view('pages.pesanan.index', [
             'pesanans' => $pesanans, 
         ]);
